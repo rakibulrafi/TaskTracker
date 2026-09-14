@@ -46,7 +46,20 @@ while (true)
     else if (choice == "2")
     {
         Console.WriteLine();
-        Console.WriteLine("View Tasks feature is coming next!");
+        Console.WriteLine("YOUR TASKS");
+        Console.WriteLine("------------------------");
+
+        if (tasks.Count == 0)
+        {
+            Console.WriteLine("No tasks found.");
+        }
+        else
+        {
+            for (int i = 0; i < tasks.Count; i++)
+            {
+                Console.WriteLine($"{i + 1}. {tasks[i]}");
+            }
+        }
 
         Console.WriteLine();
         Console.WriteLine("Press Enter to continue...");
