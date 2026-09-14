@@ -12,7 +12,8 @@ while (true)
 
     Console.WriteLine("1. Add Task");
     Console.WriteLine("2. View Tasks");
-    Console.WriteLine("3. Exit");
+    Console.WriteLine("3. Delete Tasks");
+    Console.WriteLine("4. Exit");
 
     Console.WriteLine();
     Console.Write("Choose an option: ");
@@ -65,7 +66,48 @@ while (true)
         Console.WriteLine("Press Enter to continue...");
         Console.ReadLine();
     }
+
     else if (choice == "3")
+    {
+        Console.WriteLine();
+        Console.WriteLine("DELETE TASKS");
+        Console.WriteLine("------------------------");
+
+        if (tasks.Count == 0)
+        {
+            Console.WriteLine("No tasks available for deletion.");
+        }
+        else
+        {
+            for (int i = 0; i < tasks.Count; i++)
+            {
+                Console.WriteLine($"{i + 1}. {tasks[i]}");
+            }
+
+            Console.WriteLine();
+            Console.Write("Enter the number of the task to delete: ");
+
+            if (int.TryParse(Console.ReadLine(), out int taskNumber) && taskNumber >= 1 && taskNumber <= tasks.Count)
+            {
+                tasks.RemoveAt(taskNumber - 1);
+                Console.WriteLine();
+                Console.WriteLine("Task deleted successfully!");
+            }
+            else
+            {
+                Console.WriteLine();
+                Console.WriteLine("Invalid task number.");
+            }
+        }
+
+        Console.WriteLine();
+        Console.WriteLine("Press Enter to continue...");
+        Console.ReadLine();
+    }
+
+
+
+    else if (choice == "4")
     {
         Console.WriteLine();
         Console.WriteLine("Goodbye!");
