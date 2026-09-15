@@ -10,10 +10,11 @@ while (true)
     Console.WriteLine("========================");
     Console.WriteLine();
 
-    Console.WriteLine("1. Add Task");
-    Console.WriteLine("2. View Tasks");
-    Console.WriteLine("3. Delete Tasks");
-    Console.WriteLine("4. Exit");
+  Console.WriteLine("1. Add Task");
+Console.WriteLine("2. View Tasks");
+Console.WriteLine("3. Edit Task");
+Console.WriteLine("4. Delete Task");
+Console.WriteLine("5. Exit");
 
     Console.WriteLine();
     Console.Write("Choose an option: ");
@@ -68,6 +69,56 @@ while (true)
     }
 
     else if (choice == "3")
+{
+    Console.WriteLine();
+    Console.WriteLine("EDIT TASK");
+    Console.WriteLine("------------------------");
+
+    if (tasks.Count == 0)
+    {
+        Console.WriteLine("No tasks available.");
+    }
+    else
+    {
+        for (int i = 0; i < tasks.Count; i++)
+        {
+            Console.WriteLine($"{i + 1}. {tasks[i]}");
+        }
+
+        Console.WriteLine();
+        Console.Write("Enter task number to edit: ");
+
+        string? input = Console.ReadLine();
+
+        if (int.TryParse(input, out int taskNumber))
+        {
+            if (taskNumber >= 1 && taskNumber <= tasks.Count)
+            {
+                Console.Write("Enter new task name: ");
+
+                string? updatedTask = Console.ReadLine();
+
+                if (!string.IsNullOrWhiteSpace(updatedTask))
+                {
+                    tasks[taskNumber - 1] = updatedTask;
+
+                    Console.WriteLine();
+                    Console.WriteLine("Task updated successfully!");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Invalid task number.");
+            }
+        }
+    }
+
+    Console.WriteLine();
+    Console.WriteLine("Press Enter to continue...");
+    Console.ReadLine();
+}
+
+    else if (choice == "4")
     {
         Console.WriteLine();
         Console.WriteLine("DELETE TASKS");
@@ -92,6 +143,7 @@ while (true)
                 tasks.RemoveAt(taskNumber - 1);
                 Console.WriteLine();
                 Console.WriteLine("Task deleted successfully!");
+                
             }
             else
             {
@@ -107,7 +159,7 @@ while (true)
 
 
 
-    else if (choice == "4")
+    else if (choice == "5")
     {
         Console.WriteLine();
         Console.WriteLine("Goodbye!");
